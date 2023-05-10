@@ -1,0 +1,17 @@
+.module .display-view .display {
+    font-size: 1em;
+-webkit-font-smoothing: antialiased;
+font-family: DIN, Helvetica, Arial, sans-serif;
+color: #aaa;
+font-weight: 600;
+-webkit-text-size-adjust: none;
+display: block;
+overflow: hidden;
+margin: 0 auto;
+max-width: 1200px;
+text-align: left;
+width: 100%;
+user-select: none;
+position: relative;
+}
+

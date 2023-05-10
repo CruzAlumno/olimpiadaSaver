@@ -16,5 +16,5 @@ use App\Http\Controllers\ParticipantesEquiposController;
 */
 
 Route::get('/', [EquiposController::class, 'getEquipos']);
-
-Route::get('/equipo/{id}', [ParticipantesEquiposController::class, 'getParticipantesEquipos']);
+Route::get('/equipos/{grado?}', [EquiposController::class, 'getEquipos']);
+Route::get('/equipo/{id}', [ParticipantesEquiposController::class, 'getParticipantesEquipo']);

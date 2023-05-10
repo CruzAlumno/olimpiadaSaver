@@ -7,7 +7,10 @@ use App\Models\Equipo;
 
 class EquiposController extends Controller
 {
-    public function getEquipos(){
-        return view("listas", array("arrayMedio" => Equipo::where("grado", "medio")->get(), "arraySuperior" => Equipo::where("grado", "superior")->get()));
+    public function getEquipos($grado = null){
+        $equipos = isset($grado) 
+            ? Equipo::where("grado", $grado)->get()
+            : Equipo::all();
+        return view("listas", array("equipos" => $equipos ));
     }
 }

@@ -1,90 +1,81 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.starwars')
+<link rel="stylesheet" href="./index_files/table_div.css" type="text/css">
+@section('content')
 
-        <title>Star Wars</title>
-
-        <link href="{{ asset('css/listas.css') }}" rel="stylesheet" type="text/css" >
-
-        <style>
-            body{
-                background-image: url("./img/starBackground.jpg");
-                background-repeat: repeat;
-                color: white;
-            }
-            main, header{
-                display: flex;
-                justify-content: space-evenly;
-            }
-            h1{
-                color: gold;
-                background-color: black;
-                border: 2px solid white;
-            }
-            h2{
-                border: 2px solid white;
-                flex: 1;
-                background-color: black;
-                color: gold;
-                text-align: center;
-            }
-            .equipo-card{
-                display:flex;
-                justify-content: space-evenly;
-                border: 2px solid white;
-                background-color: black;
-                margin: 10px;
-                padding: 10px;
-            }
-        </style>
-
-    </head>
-    <body class="antialiased">
-        <header>
-            <h1>Titulo goes now</h1>
-        </header>
-        <main id="main_container">
-            <div id="medioList" class="list">
-                <h2>Grado Medio</h2>
-                @foreach( $arrayMedio as $equipo )
-                <div class="equipo-card">
-                    <div class="equipo-content">
-                        <h3>{{ $equipo->nombreEquipo }}</h3>
-                        <h4>{{ $equipo->nombreCentro }}</h4>
-                        <ul>
-                            <li>Prueba 1: {{ $equipo->prueba1 }}</li>
-                            <li>Prueba 2: {{ $equipo->prueba2 }}</li>
-                            <li>Prueba 3: {{ $equipo->prueba3 }}</li>
-                            <li>Prueba 4: {{ $equipo->prueba4 }}</li>
-                        </ul>
-                        <a href="/equipo/{{ $equipo->id }}">Participantes</a>
+@foreach( $equipos as $equipo )
+<!-- Inicio del código necesario para visualizar cada película -->
+<section class="module display-view display" data-module="display" id="ref-1-2">
+    <div class="bound layout-right">
+        <div class="blocks-bound">
+            <div class="blocks-container ref-1-2">
+                <ul class="blocks-list-view active el3_1A">
+                    <div class="building-block-config el3_1A films-content    full image-left content-height-fixed ratio-2x1 short     mob-width-full mob-image-top           ">
+                        <div class="building-block     ">
+                            <div class="building-block-aspect">
+                                <div class="building-block-padding">
+                                    <div class="building-block-wrapper">
+                                        <div class="image-wrapper">
+                                            <div class="aspect">
+                                                <img
+                                                        src="https://lumiere-a.akamaihd.net/v1/images/Star-Wars-Phantom-Menace-I-Poster_f5832812.jpeg?region=0%2C250%2C678%2C340&width=600"
+                                                        class="thumb reserved-ratio">
+                                            </div>
+                                        </div>
+                                        <div class="content-wrapper   ">
+                                            <div class="bedazzlement"></div>
+                                            <div class="content-bumper">
+                                                <div class="content-info">
+                                                    <h3 class="title">
+                                                            <span class="long-title">{{ $equipo->nombreCentro }}</span>
+                                                    </h3>
+                                                    <div class="desc-sizer">
+                                                            <p class="desc">{{ $equipo->nombreEquipo }}</p>
+                                                    </div>
+                                                    <div class="anchored-text">
+                                                        <a href="/films/1/characters">
+                                                        <h4 class="category-info"> <span
+                                                                class="content-icon films-icon"></span> <span
+                                                                class="category-name">Prueba 1</span> {{ $equipo->prueba1 }}</h4>
+    
+                                                    </div>
+                                                    <div class="anchored-text">
+                                                        <h4 class="category-info"> <span
+                                                                class="content-icon films-icon"></span> <span
+                                                                class="category-name">Prueba 2</span> {{ $equipo->prueba2 }}</h4>
+                                                    </div>
+                                                    <div class="anchored-text">
+                                                        <h4 class="category-info"> <span
+                                                                class="content-icon films-icon"></span> <span
+                                                                class="category-name">Prueba 3</span> {{ $equipo->prueba3 }}</h4>
+                                                    </div>
+                                                    <div class="anchored-text">
+                                                        <h4 class="category-info"> <span
+                                                                class="content-icon films-icon"></span> <span
+                                                                class="category-name">Prueba 4</span> {{ $equipo->prueba4 }}</h4>
+                                                    </div>
+                                                    </div>
+                                            </div>
+                                            <div
+                                                class="metadata    mob-name mob-photo mob-date tab-name tab-photo tab-date desktop-name desktop-photo desktop-date   ">
+                                                <div class="anchored-text">
+                                                    <a href="/equipo/{{ $equipo->id }}">
+                                                    <h4 class="category-info"> <span
+                                                            class="content-icon films-icon"></span> <span
+                                                            class="category-name">Participantes</span> </h4>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <img alt="image" class="equipo-img" src="{{ $equipo->image }}">
-                </div>
-                @endforeach
+                </ul>
             </div>
-            <div id="superiorList" class="list">
-                <h2>Grado Superior</h2>
-                @foreach( $arraySuperior as $equipo )
-                <div class="equipo-card">
-                    <div class="equipo-content">
-                        <h3>{{ $equipo->nombreEquipo }}</h3>
-                        <h4>{{ $equipo->nombreCentro }}</h4>
-                        <ul>
-                            <li>Prueba 1: {{ $equipo->prueba1 }}</li>
-                            <li>Prueba 2: {{ $equipo->prueba2 }}</li>
-                            <li>Prueba 3: {{ $equipo->prueba3 }}</li>
-                            <li>Prueba 4: {{ $equipo->prueba4 }}</li>
-                            <li>Prueba 5: {{ $equipo->prueba5 }}</li>
-                        </ul>
-                        <a href="/equipo/{{ $equipo->id }}">Participantes</a>
-                    </div>
-                    <img alt="image" class="equipo-img"  src="{{ $equipo->image }}">
-                </div>
-                @endforeach
-            </div>
-        </main>
-    </body>
-</html>
+        </div>
+    </div>
+</section>
+@endforeach
+<!-- FIN del código necesario para visualizar cada película -->
+@stop

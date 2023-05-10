@@ -19,6 +19,6 @@ class ParticipantesEquiposController extends Controller
             array_push($listaParticipantes, Participante::findOrFail($participanteEquipo->id_participante));
         }
 
-        return view("equipo", array("listaParticipantes" => $listaParticipantes, "equipo" => Equipo::firstOrFail($id)));
+        return view("characters", array("listaParticipantes" => $listaParticipantes, "equipo" => Equipo::where('id', $id)->firstOrFail()));
     }
 }
