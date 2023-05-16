@@ -54,11 +54,19 @@
               </a>
             </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link gamesapps-content" href="#"
+              <a itemprop="url" class="section-link gamesapps-content" href="/resultados/medio"
                 data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                <p class="gamesapps-content-title"><span>resultados</span><span class="vertical-bar"></span><span
+                <p class="gamesapps-content-title"><span>resultados GM</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
+            </li>
+            <li itemprop="name">
+              <a itemprop="url" class="section-link gamesapps-content" href="/resultados/superior"
+                data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
+                <p class="gamesapps-content-title"><span>resultados GS</span><span class="vertical-bar"></span><span
+                    class="horizontal-bar"></span></p>
+              </a>
+            </li>
           </ul>
 
           @include('includes.drawer-bottom')

@@ -13,4 +13,12 @@ class EquiposController extends Controller
             : Equipo::all();
         return view("listas", array("equipos" => $equipos ));
     }
+    public function getResultados($grado){
+        $equipos = Equipo
+                 ::where('grado', $grado)
+                 ->whereNotNull('premio')
+                 ->orderBy('premio', 'desc')
+                 ->get();
+        return view("resultados", array("equipos" => $equipos ));
+    }
 }
