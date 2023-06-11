@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEquiposTable extends Migration
+class CreatePruebasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateEquiposTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipos', function (Blueprint $table) {
+        Schema::create('pruebas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreEquipo');
-            $table->string('nombreCentro');
-            $table->text('participantes');
+            $table->string('nombre');
+            $table->text('descripcion');
             $table->enum('grado', array('medio', 'superior', 'modding'));
-            $table->boolean('confirmed')->default(false);
-            $table->bigInteger('id_olimpiada')->unsigned();
+            $table->unsignedBigInteger('id_olimpiada');
             $table->timestamps();
 
             $table->foreign('id_olimpiada')->references('id')->on('olimpiadas');
@@ -34,7 +32,7 @@ class CreateEquiposTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('equipos_id_olimpiada_foreign');
-        Schema::dropIfExists('equipos');
+        $table->dropForeign('pruebas_id_olimpiada_foreign');
+        Schema::dropIfExists('pruebas');
     }
 }

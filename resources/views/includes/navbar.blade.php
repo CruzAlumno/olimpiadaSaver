@@ -51,9 +51,9 @@
           <span class="bar"></span>
         </div>
       </div>
-      <a id="nav-sw-logo-bar" href="http://starwars.test/" itemprop="logo" data-cto="swlogo"
+      <a id="nav-sw-logo-bar" href="http://starwarsbattle.test/" itemprop="logo" data-cto="swlogo"
         title="Star Wars Home"></a>
-      <a id="nav-sw-logo" href="http://starwars.test/" itemprop="logo" data-cto="swlogo"
+      <a id="nav-sw-logo" href="http://starwarsbattle.test/" itemprop="logo" data-cto="swlogo"
         title="Star Wars Logo"></a>
 
       <div id="nav-utility">

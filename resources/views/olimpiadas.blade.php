@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="./index_files/table_div.css" type="text/css">
 @section('content')
 
-@foreach( $equipos as $equipo )
+@foreach( $olimpiadas as $olimpiada )
 <!-- Inicio del código necesario para visualizar cada película -->
 <section class="module display-view display" data-module="display" id="ref-1-2">
     <div class="bound layout-right">
@@ -26,36 +26,21 @@
                                             <div class="content-bumper">
                                                 <div class="content-info">
                                                     <h3 class="title">
-                                                            <span class="long-title">{{ $equipo['nombreEquipo'] }}</span>
+                                                            <span class="long-title">{{ $olimpiada->nombre }}</span>
                                                     </h3>
                                                     <div class="desc-sizer">
-                                                            <p class="desc">{{ $equipo['nombreCentro'] }}</p>
+                                                            <p class="desc">Edicion {{ $olimpiada->edicionOlimpiada }}, Modding {{ $olimpiada->edicionModding }}</p>
+                                                            <p class="desc">{{ $olimpiada->cursoOlimpiada }}</p>
                                                     </div>
 
-                                                    <h4>Puntuaciones</h4>
-                                                    @foreach( $equipo['pruebas'] as $prueba )
-                                                    <div class="anchored-text">
-                                                        <h4 class="category-info"> <span
-                                                                class="content-icon films-icon"></span> <span
-                                                                class="category-name">{{ $prueba["nombre"] }}</span> {{ $prueba["puntuacion"] }}</h4>
-
-                                                    </div>
-                                                    @endforeach
-                                                    <h4>Miembros</h4>
-                                                    @foreach( $equipo['participantes'] as $participante )
-                                                    <div class="anchored-text">
-                                                        <h4 class="category-info">
-                                                            <span class="content-icon films-icon"></span>
-                                                            <span class="category-name">{{ $participante }}</span></h4>
-
-                                                    </div>
-                                                    @endforeach
+                                                    <p>Fecha de apertura de subscripciones: {{ $olimpiada->openDate }}</p>
+                                                    <p>Fecha de cierre de subscripciones: {{ $olimpiada->closeDate }}</p>
+                                                    <p>Fecha de realización: {{ $olimpiada->eventDate }}</p>
                                                 </div>
                                             </div>
                                             <div
                                                 class="metadata    mob-name mob-photo mob-date tab-name tab-photo tab-date desktop-name desktop-photo desktop-date   ">
                                                 <div class="anchored-text">
-                                                    <a href="/equipo/{{ $equipo['nombreEquipo'] }}">
                                                     <h4 class="category-info"> <span
                                                             class="content-icon films-icon"></span> <span
                                                             class="category-name">Participantes</span> </h4>

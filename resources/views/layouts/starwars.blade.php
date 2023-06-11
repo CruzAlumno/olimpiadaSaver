@@ -69,7 +69,7 @@
             </li>
           </ul>
 
-          @include('includes.drawer-bottom')
+
         </nav>
       </div>
       <div id="countdown" class="hidden">
@@ -128,6 +128,7 @@
   <!-- FIN DEL CONTENIDO DE CADA PANTALLA -->
             </div>
             </section>
+
             <style class="module_styles" type="text/css">
               <!-- /* header_banner module 1-0 */
               -->
@@ -179,6 +180,7 @@
       </div>
     </div>
 
+    <!--
     <footer itemscope="" itemtype="http://schema.org/WPFooter">
       <section id="utility" class="social">
         <div class="social-links">
@@ -243,6 +245,7 @@
         </div>
       </section>
     </footer>
+-->
     <div id="modal-container" role="dialog" aria-labelledby="modal-content">
       <div id="modal-window" class="out-of-burger" aria-modal="false">
         <div id="modal-close" class="top-right hidden"></div>

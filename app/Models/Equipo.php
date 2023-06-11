@@ -10,6 +10,8 @@ class Equipo extends Model
 {
     use HasFactory;
 
+    protected $table = 'equipos';
+
     public function miembros()
     {
         return $this->belongsToMany(Participante::class,'participantesequipos', 'id_equipo', 'id_participante' );
