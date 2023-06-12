@@ -15,6 +15,9 @@
         <option>Modding</option>
     </select>
     <select type="date" id="testOl" name="testOl">
+    @foreach ($olimpiadas as $olimpiada)
+        <option value={{olimpiada->id}}>{{olimpiada->nombre}}</option>
+    @endforeach
     </select>
     <input type="submit" value="Crear">
 </form>
