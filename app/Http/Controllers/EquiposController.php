@@ -44,8 +44,6 @@ class EquiposController extends Controller
     public function getEquipoForm(){
         $lastOlimpiadaId = Olimpiada::latest()->first()->id;
 
-        Log::info($lastOlimpiadaId);
-
         return view('equipoFormulario', array('lastOlimpiadaId' => $lastOlimpiadaId));
     }
 
@@ -66,6 +64,6 @@ class EquiposController extends Controller
 
         $newEquipo->save();
 
-        return redirect('/equipos//' . $request->input("olId"));
+        return redirect('/equipos/' . $request->input("olId"));
     }
 }
