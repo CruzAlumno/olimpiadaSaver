@@ -58,6 +58,18 @@ class EquiposController extends Controller
 
         $newEquipo->save();
 
-        return redirect('/equipos/' . $request->input("olId"));
+        $pruebas = Prueba::where('id_olimpiada', $request->input('olId'))->where('grado', $request->input('teamSub'))->get();
+
+        foreach($pruebas as $prueba){
+            $puntuacion = new Puntuacion;
+
+            $puntuacion->id_prueba = $prueba->id;
+            $puntuacion->id_equipo = $newEquipo->id;
+            $puntuacion->puntuacion = 0;
+
+            $puntuacion->save();
+        }
+
+        return redirect('equipos/' . $request->input("olId"));
     }
 }

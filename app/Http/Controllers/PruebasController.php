@@ -35,6 +35,18 @@ class PruebasController extends Controller
 
         $newPrueba->save();
 
-        return redirect('/pruebas/' . $request->input("testOl"));
+        $equipos = Equipo::where('id_olimpiada', $newPrueba->id_olimpiada)->where('grado', $newPrueba->grado)->get();
+
+        foreach($equipos as $equipo){
+            $puntuacion = new Puntuacion;
+
+            $puntuacion->id_prueba = $newPrueba->id;
+            $puntuacion->id_equipo = $equipo->id;
+            $puntuacion->puntuacion = 0;
+
+            $puntuacion->save();
+        }
+
+        return redirect('admin/pruebas/' . $request->input("testOl"));
     }
 }

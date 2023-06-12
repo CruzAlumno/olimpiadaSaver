@@ -31,7 +31,6 @@
                                                     <div class="desc-sizer">
                                                             <p class="desc">{{ $prueba->descripcion }}</p>
                                                     </div>
-                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div

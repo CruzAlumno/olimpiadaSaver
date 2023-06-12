@@ -7,7 +7,7 @@
     <label for="testName">Nombre de la prueba: </label>
     <input type="text" id="testName" name="testName" required>
     <label for="testDesc">Descripcion de la prueba: </label>
-    <input type="text" id="testDesc" name="testDesc" required>
+    <textarea id="testDesc" name="testDesc" required></textarea>
     <label for="testSub">Grado de prueba: </label>
     <select type="date" id="testSub" name="testSub">
         <option>Superior</option>
