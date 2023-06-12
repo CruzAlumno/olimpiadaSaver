@@ -56,12 +56,6 @@ class EquiposController extends Controller
         $newEquipo->grado = $request->input('teamSub');
         $newEquipo->id_olimpiada = $request->input('olId');
 
-        Log::info($request->input('olId'));
-        Log::info($request->input('teamName'));
-        Log::info($request->input('teamCenter'));
-        Log::info($request->input('teamMembers'));
-        Log::info($request->input('teamSub'));
-
         $newEquipo->save();
 
         return redirect('/equipos/' . $request->input("olId"));
