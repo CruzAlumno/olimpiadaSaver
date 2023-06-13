@@ -33,12 +33,29 @@ class EquiposController extends Controller
         return view("listas", array("equipos" => $equiposFormat ));
     }
 
-    public function getResultados($grado){
+    public function getResultados($grado, $olimpiada){
+        $equiposFormat = array();
         $equipos = Equipo::where('grado', $grado)
-                 ->whereNotNull('premio')
-                 ->orderBy('premio', 'desc')
+                 ->where('id_olimpiada', $olimpiada)
                  ->get();
-        return view("resultados", array("equipos" => $equipos ));
+        if ($grado = 'modding') {
+            $equiposFormat = [['1º lugar', []], ['2º lugar', []], ['3º lugar', []]];
+            foreach ($equipos as $equipo) {
+                $participantes = explode(',', $equipo->participantes);
+                $pruebas = array();
+                $puntuaciones = Puntuacion::where('id_equipo', $equipo->id)->get();
+                
+                $puntuacionTotal = 0;
+                foreach($puntuaciones as $puntuacion) {
+                    $puntuacionTotal += $puntuacion->puntuacion;
+                    array_push($pruebas, ['nombre' => Prueba::find($puntuacion->id_prueba)->nombre, 'puntuacion' => $puntuacion->puntuacion]);
+                }
+                
+                foreach($equiposFormat as &$equipoF) {
+                }
+            }
+        } else {
+        }
     }
 
     public function getEquipoForm(){
