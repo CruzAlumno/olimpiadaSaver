@@ -39,22 +39,67 @@ class EquiposController extends Controller
                  ->where('id_olimpiada', $olimpiada)
                  ->get();
         if ($grado = 'modding') {
-            $equiposFormat = [['1º lugar', []], ['2º lugar', []], ['3º lugar', []]];
+            $equiposFormat = [["puntuacionTotal" => 0], ["puntuacionTotal" => 0], ["puntuacionTotal" => 0]];
             foreach ($equipos as $equipo) {
                 $participantes = explode(',', $equipo->participantes);
                 $pruebas = array();
                 $puntuaciones = Puntuacion::where('id_equipo', $equipo->id)->get();
-                
+
                 $puntuacionTotal = 0;
                 foreach($puntuaciones as $puntuacion) {
                     $puntuacionTotal += $puntuacion->puntuacion;
                     array_push($pruebas, ['nombre' => Prueba::find($puntuacion->id_prueba)->nombre, 'puntuacion' => $puntuacion->puntuacion]);
                 }
-                
-                foreach($equiposFormat as &$equipoF) {
+
+                if($equiposFormat[0]["puntuacionTotal"] < $puntuacionTotal){
+                    $equiposFormat[2] = $equiposFormat[1];
+                    $equiposFormat[1] = $equiposFormat[0];
+                    $equiposFormat[0] = ["puntuacionTotal" => $puntuacionTotal, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
+                }
+                else if($equiposFormat[1]["puntuacionTotal"] < $puntuacionTotal){
+                    $equiposFormat[2] = $equiposFormat[1];
+                    $equiposFormat[1] = ["puntuacionTotal" => $puntuacionTotal, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
+                }
+                else if($equiposFormat[2]["puntuacionTotal"] < $puntuacionTotal){
+                    $equiposFormat[2] = ["puntuacionTotal" => $puntuacionTotal, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
                 }
             }
+            return view("moddingResultados", array("equipos" => $equiposFormat ));
         } else {
+            $equiposFormat = [0 => ["puntuacionTotal" => 0, "titulo" => "Ganadores Finales"]];
+
+            $pruebas = Prueba::where('id_aplicacion', $olimpiada)->where('grado', $grado)->get();
+
+            foreach($pruebas as $prueba) {
+                $equiposFormat[$prueba->id] = ["puntuacion" => 0, "titulo" => $prueba->nombre];
+            }
+
+            foreach ($equipos as $equipo) {
+                $participantes = explode(',', $equipo->participantes);
+                $pruebas = array();
+                $puntuaciones = Puntuacion::where('id_equipo', $equipo->id)->get();
+
+                $puntuacionTotal = 0;
+                foreach($puntuaciones as $puntuacion) {
+                    $puntuacionTotal += $puntuacion->puntuacion;
+                    array_push($pruebas, ['nombre' => Prueba::find($puntuacion->id_prueba)->nombre, 'puntuacion' => $puntuacion->puntuacion]);
+                }
+
+                if($puntuacionTotal > $equiposFormat[0]["puntuacionTotal"]){
+                    $equiposFormat[0]["puntuacionTotal"] = $puntuacionTotal;
+                    $equiposFormat[0]["equipo"] = ['nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
+                }
+
+                foreach($puntuaciones as $puntuacion){
+                    if($equiposFormat[$puntuacion->id_prueba]["puntuacion"] < $puntuacion->puntuacion){
+                        $equiposFormat[$puntuacion->id_prueba]["puntuacion"] = $puntuacion->puntuacion;
+                        $equiposFormat[$puntuacion->id_prueba]["equipo"] = ['nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
+                    }
+                }
+
+            }
+
+            return view("resultados", array("equipos" => $equiposFormat ));
         }
     }
 
