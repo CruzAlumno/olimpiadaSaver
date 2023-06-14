@@ -27,5 +27,9 @@ class EquipoSeeder extends Seeder
     }
 
     private static $equipos = array(['team1', 'CIFP', 'Maria Alba,Cruz Senoa', 'superior', 1],
-                                    ['team2', 'FPIC', 'Maria Senoa,Cruz Alba', 'modding', 2]);
+                                    ['team2', 'FPIC', 'Maria Senoa,Cruz Alba', 'superior', 1]
+                                   ['team3', 'FPIC', 'Maria Senoa,Cruz Alba', 'superior', 1]
+                                   ['team4', 'FPIC', 'Maria Senoa,Cruz Alba', 'modding', 1]
+                                   ['team5', 'FPIC', 'Maria Senoa,Cruz Alba', 'modding', 1]
+                                   ['team6', 'FPIC', 'Maria Senoa,Cruz Alba', 'modding', 1]);
 }
