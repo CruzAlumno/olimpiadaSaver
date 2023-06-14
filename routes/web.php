@@ -29,6 +29,7 @@ Route::post('/admin/newPrueba', [PruebasController::class, 'createPrueba']);
 Route::get('/admin/newTeam', [EquiposController::class, 'getEquipoForm']);
 Route::post('/admin/newTeam', [EquiposController::class, 'createEquipo']);
 Route::get('/equipos/{olimpiada?}', [EquiposController::class, 'getEquipos']);
+Route::get('/{olimpiada}/{grado}/resultados', [EquiposController::class, 'getResultados']);
 
 // Route::get('/equipo/{id}', [ParticipantesEquiposController::class, 'getParticipantesEquipo']);
 // Route::get('/resultados/{grado}', [EquiposController::class, 'getResultados']);
