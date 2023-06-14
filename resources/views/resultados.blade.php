@@ -4,6 +4,7 @@
 
 @foreach( $equipos as $equipo )
 <!-- Inicio del código necesario para visualizar cada película -->
+<h1>{{$equipo["titulo"]</h1>
 <section class="module display-view display" data-module="display" id="ref-1-2">
     <div class="bound layout-right">
         <div class="blocks-bound">
@@ -26,14 +27,14 @@
                                             <div class="content-bumper">
                                                 <div class="content-info">
                                                     <h3 class="title">
-                                                            <span class="long-title">{{ $equipo['nombreEquipo'] }}</span>
+                                                            <span class="long-title">{{ $equipo["equipo"]['nombreEquipo'] }}</span>
                                                     </h3>
                                                     <div class="desc-sizer">
-                                                            <p class="desc">{{ $equipo['nombreCentro'] }}</p>
+                                                            <p class="desc">{{ $equipo["equipo"]['nombreCentro'] }}</p>
                                                     </div>
 
                                                     <h4>Puntuaciones</h4>
-                                                    @foreach( $equipo['pruebas'] as $prueba )
+                                                    @foreach( $equipo["equipo"]['pruebas'] as $prueba )
                                                     <div class="anchored-text">
                                                         <h4 class="category-info"> <span
                                                                 class="content-icon films-icon"></span> <span
@@ -42,7 +43,7 @@
                                                     </div>
                                                     @endforeach
                                                     <h4>Miembros</h4>
-                                                    @foreach( $equipo['participantes'] as $participante )
+                                                    @foreach( $equipo["equipo"]['participantes'] as $participante )
                                                     <div class="anchored-text">
                                                         <h4 class="category-info">
                                                             <span class="content-icon films-icon"></span>
@@ -55,7 +56,7 @@
                                             <div
                                                 class="metadata    mob-name mob-photo mob-date tab-name tab-photo tab-date desktop-name desktop-photo desktop-date   ">
                                                 <div class="anchored-text">
-                                                    <a href="/equipo/{{ $equipo['nombreEquipo'] }}">
+                                                    <a href="/equipo/{{ $equipo["equipo"]['nombreEquipo'] }}">
                                                     <h4 class="category-info"> <span
                                                             class="content-icon films-icon"></span> <span
                                                             class="category-name">Participantes</span> </h4>
