@@ -41,6 +41,6 @@ class PuntuacionSeeder extends Seeder
                                          [5, 6, 1000],
                                          [6, 4, 10],
                                          [6, 5, 1000],
-                                         [6, 6, 100],
+                                         [6, 6, 100]
                                         );
 }
