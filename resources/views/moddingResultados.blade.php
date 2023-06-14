@@ -2,8 +2,14 @@
 <link rel="stylesheet" href="./index_files/table_div.css" type="text/css">
 @section('content')
 
+<?php
+    $titulos = ["1º Equipo", "2º Equipo", "3º Equipo"];
+    $index = 0;
+?>
 @foreach( $equipos as $equipo )
 <!-- Inicio del código necesario para visualizar cada película -->
+<h1>{{$titulos[$index]}}</h1>
+<?php $index += 1; ?>
 <section class="module display-view display" data-module="display" id="ref-1-2">
     <div class="bound layout-right">
         <div class="blocks-bound">

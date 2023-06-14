@@ -23,7 +23,7 @@ class CreateEquiposTable extends Migration
             $table->bigInteger('id_olimpiada')->unsigned();
             $table->timestamps();
 
-            $table->foreign('id_olimpiada')->references('id')->on('olimpiadas');
+            $table->foreign('id_olimpiada')->references('id')->on('olimpiadas')->onDelete('cascade');
         });
     }
 

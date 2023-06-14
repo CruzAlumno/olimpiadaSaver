@@ -4,7 +4,7 @@
 
 @foreach( $equipos as $equipo )
 <!-- Inicio del código necesario para visualizar cada película -->
-<h1>{{$equipo["titulo"]</h1>
+<h1>{{$equipo["titulo"]}}</h1>
 <section class="module display-view display" data-module="display" id="ref-1-2">
     <div class="bound layout-right">
         <div class="blocks-bound">

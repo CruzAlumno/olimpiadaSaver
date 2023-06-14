@@ -20,8 +20,8 @@ class CreatePuntuacionesTable extends Migration
             $table->integer('puntuacion');
             $table->timestamps();
 
-            $table->foreign('id_prueba')->references('id')->on('pruebas');
-            $table->foreign('id_equipo')->references('id')->on('equipos');
+            $table->foreign('id_prueba')->references('id')->on('pruebas')->onDelete('cascade');
+            $table->foreign('id_equipo')->references('id')->on('equipos')->onDelete('cascade');
         });
     }
 

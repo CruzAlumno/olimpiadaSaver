@@ -11,10 +11,10 @@ use App\Models\Olimpiada;
 
 class EquiposController extends Controller
 {
-    public function getEquipos($olimpiada = null){
+    public function getEquipos($olimpiada, $grado){
         $equiposFormat = array();
         $equipos = isset($olimpiada)
-            ? Equipo::where("id_olimpiada", $olimpiada)->get()
+            ? Equipo::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get()
             : Equipo::all();
 
         foreach ($equipos as $equipo) {
@@ -30,15 +30,37 @@ class EquiposController extends Controller
             array_push($equiposFormat, ['nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
         }
 
-        return view("listas", array("equipos" => $equiposFormat ));
+        return view("equipos", array("equipos" => $equiposFormat ));
     }
 
-    public function getResultados($grado, $olimpiada){
+    public function getEquiposAdmin($olimpiada, $grado){
+        $equiposFormat = array();
+        $equipos = isset($olimpiada)
+            ? Equipo::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get()
+            : Equipo::all();
+
+        foreach ($equipos as $equipo) {
+            $participantes = explode(',', $equipo->participantes);
+            $pruebas = array();
+
+            $puntuaciones = Puntuacion::where('id_equipo', $equipo->id)->get();
+
+            foreach($puntuaciones as $puntuacion) {
+                array_push($pruebas, ['nombre' => Prueba::find($puntuacion->id_prueba)->nombre, 'puntuacion' => $puntuacion->puntuacion, 'id' => $puntuacion->id]);
+            }
+
+            array_push($equiposFormat, ['grado' => $grado, 'id_olimpiada' => $olimpiada, 'id' => $equipo->id, 'confirmed' => $equipo->confirmed, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
+        }
+
+        return view("equiposAdmin", array("equipos" => $equiposFormat ));
+    }
+
+    public function getResultados($olimpiada, $grado){
         $equiposFormat = array();
         $equipos = Equipo::where('grado', $grado)
                  ->where('id_olimpiada', $olimpiada)
                  ->get();
-        if ($grado = 'modding') {
+        if (strcmp($grado, "modding") == 0) {
             $equiposFormat = [["puntuacionTotal" => 0], ["puntuacionTotal" => 0], ["puntuacionTotal" => 0]];
             foreach ($equipos as $equipo) {
                 $participantes = explode(',', $equipo->participantes);
@@ -65,10 +87,10 @@ class EquiposController extends Controller
                 }
             }
             return view("moddingResultados", array("equipos" => $equiposFormat ));
-        } else {
+        } else if(strcmp($grado, "superior") == 0 or (strcmp($grado, "medio") == 0)) {
             $equiposFormat = [0 => ["puntuacionTotal" => 0, "titulo" => "Ganadores Finales"]];
 
-            $pruebas = Prueba::where('id_aplicacion', $olimpiada)->where('grado', $grado)->get();
+            $pruebas = Prueba::where('id_olimpiada', $olimpiada)->where('grado', $grado)->get();
 
             foreach($pruebas as $prueba) {
                 $equiposFormat[$prueba->id] = ["puntuacion" => 0, "titulo" => $prueba->nombre];
@@ -133,5 +155,41 @@ class EquiposController extends Controller
         }
 
         return redirect('equipos/' . $request->input("olId"));
+    }
+
+    public function confirmEquipo($equipo){
+        $confirmEquipo = Equipo::find($equipo);
+
+        $confirmEquipo->confirmed = true;
+
+        $confirmEquipo->save();
+
+        return redirect('/admin/' . $confirmEquipo->id_olimpiada . '/' . $confirmEquipo->grado . '/equipos');
+    }
+
+    public function deleteEquipo($equipo){
+        $deleteEquipo = Equipo::find($equipo);
+
+        $deleteEquipo->confirmed = true;
+
+        $deleteEquipo->delete();
+
+        return redirect('/admin/' . $deleteEquipo->id_olimpiada . '/' . $deleteEquipo->grado . '/equipos');
+    }
+
+    public function changeEquipoScore(Request $request){
+
+        $puntuaciones = Puntuacion::where("id_equipo", $request->input("id_equipo"))->get();
+
+        foreach($puntuaciones as $puntuacion) {
+            if ($request->has($puntuacion->id)) {
+                $puntuacion->puntuacion = $request->input($puntuacion->id);
+                $puntuacion->save();
+            }
+        }
+
+        $equipo = Equipo::find($request->input("id_equipo"));
+
+        return redirect('/admin/' . $equipo->id_olimpiada . '/' . $equipo->grado . '/equipos');
     }
 }

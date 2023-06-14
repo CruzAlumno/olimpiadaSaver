@@ -28,7 +28,7 @@ class PruebaSeeder extends Seeder
     private static $pruebas = array(['superior 1', 'Debes de basear datos', 'superior', 1],
                                     ['superior 2', 'HAX HAX HAX HAX HAX HAX HAX HAX', 'superior', 1],
                                     ['superior 3', 'Debes de basear MORE MORE datos', 'superior', 1],
-                                    ['modding 1', 'we shouldnt do this', 'modding', 1]
-                                   ['modding 2', 'we shouldnt do this', 'modding', 1]
+                                    ['modding 1', 'we shouldnt do this', 'modding', 1],
+                                   ['modding 2', 'we shouldnt do this', 'modding', 1],
                                    ['modding 3', 'we shouldnt do this', 'modding', 1]);
 }

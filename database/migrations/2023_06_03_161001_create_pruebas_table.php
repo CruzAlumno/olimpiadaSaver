@@ -21,7 +21,7 @@ class CreatePruebasTable extends Migration
             $table->unsignedBigInteger('id_olimpiada');
             $table->timestamps();
 
-            $table->foreign('id_olimpiada')->references('id')->on('olimpiadas');
+            $table->foreign('id_olimpiada')->references('id')->on('olimpiadas')->onDelete('cascade');
         });
     }
 
