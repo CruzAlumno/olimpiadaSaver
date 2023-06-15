@@ -4,7 +4,7 @@
 <form method="POST">
     @csrf
     <h1>Crear prueba</h1>
-    <input type="hidden" id="testOl" name="testOl" value={{$olimpiada}}>
+    <input type="hidden" id="testOl" name="testOl" value={{$ol}}>
     <label for="testName">Nombre de la prueba: </label>
     <input type="text" id="testName" name="testName" required>
     <label for="testDesc">Descripcion de la prueba: </label>

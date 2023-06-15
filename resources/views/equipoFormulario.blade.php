@@ -4,7 +4,7 @@
 <form method="POST">
     @csrf
     <h1>Datos de equipo</h1>
-    <input type="hidden" id="olId" name="olId" value={{$olimpiada}}>
+    <input type="hidden" id="olId" name="olId" value={{$ol}}>
     <label for="teamName">Nombre del equipo: </label>
     <input type="text" id="teamName" name="teamName" required>
     <label for="teamCenter">Nombre del Centro: </label>

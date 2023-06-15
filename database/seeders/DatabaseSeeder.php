@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             EquipoSeeder::class,
             PruebaSeeder::class,
             PuntuacionSeeder::class,
-            PatrocinadorSeeder::class
+            PatrocinadorSeeder::class,
+            UserSeeder::class
         ]);
         Schema::enableForeignKeyConstraints();
     }

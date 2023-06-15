@@ -41,9 +41,10 @@
                                             <div
                                                 class="metadata    mob-name mob-photo mob-date tab-name tab-photo tab-date desktop-name desktop-photo desktop-date   ">
                                                 <div class="anchored-text">
+                                                    <a href="/{{$olimpiada->id}}/superior/equipos">
                                                     <h4 class="category-info"> <span
                                                             class="content-icon films-icon"></span> <span
-                                                            class="category-name">Participantes</span> </h4>
+                                                            class="category-name">Entrar</span> </h4>
                                                     </a>
                                                 </div>
                                             </div>

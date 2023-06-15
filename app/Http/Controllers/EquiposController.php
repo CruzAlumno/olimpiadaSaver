@@ -30,7 +30,7 @@ class EquiposController extends Controller
             array_push($equiposFormat, ['nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
         }
 
-        return view("equipos", array("equipos" => $equiposFormat, "olimpiada" => $olimpiada));
+        return view("equipos", array("equipos" => $equiposFormat, "ol" => $olimpiada));
     }
 
     public function getEquiposAdmin($olimpiada, $grado){
@@ -52,7 +52,7 @@ class EquiposController extends Controller
             array_push($equiposFormat, ['grado' => $grado, 'id_olimpiada' => $olimpiada, 'id' => $equipo->id, 'confirmed' => $equipo->confirmed, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
         }
 
-        return view("equiposAdmin", array("equipos" => $equiposFormat, "olimpiada" => $olimpiada ));
+        return view("equiposAdmin", array("equipos" => $equiposFormat, "ol" => $olimpiada ));
     }
 
     public function getResultados($olimpiada, $grado){
@@ -86,7 +86,7 @@ class EquiposController extends Controller
                     $equiposFormat[2] = ["puntuacionTotal" => $puntuacionTotal, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
                 }
             }
-            return view("moddingResultados", array("equipos" => $equiposFormat, "olimpiada" => $olimpiada));
+            return view("moddingResultados", array("equipos" => $equiposFormat, "ol" => $olimpiada));
         } else if(strcmp($grado, "superior") == 0 or (strcmp($grado, "medio") == 0)) {
             $equiposFormat = [0 => ["puntuacionTotal" => 0, "titulo" => "Ganadores Finales"]];
 
@@ -121,7 +121,7 @@ class EquiposController extends Controller
 
             }
 
-            return view("resultados", array("equipos" => $equiposFormat, "olimpiada" => $olimpiada ));
+            return view("resultados", array("equipos" => $equiposFormat, "ol" => $olimpiada ));
         }
     }
 
@@ -153,7 +153,7 @@ class EquiposController extends Controller
             $puntuacion->save();
         }
 
-        return view('equipoFormulario', array('olimpiada' => $request->input('olId'),  'created' => true));
+        return view('equipoFormulario', array('ol' => $request->input('olId'),  'created' => true));
     }
 
     public function confirmEquipo($equipo){

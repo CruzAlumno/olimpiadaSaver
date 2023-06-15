@@ -14,13 +14,13 @@ class PruebasController extends Controller
     public function getPruebas($olimpiada, $grado){
         $pruebas = Prueba::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get();
 
-        return view("pruebas", array("pruebas" => $pruebas, "olimpiada" => $olimpiada ));
+        return view("pruebas", array("pruebas" => $pruebas, "ol" => $olimpiada ));
     }
 
     public function getPruebasAdmin($olimpiada, $grado){
         $pruebas = Prueba::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get();
 
-        return view("pruebasAdmin", array("pruebas" => $pruebas, "olimpiada" => $olimpiada ));
+        return view("pruebasAdmin", array("pruebas" => $pruebas, "ol" => $olimpiada ));
     }
 
     public function deletePrueba($prueba){
@@ -28,12 +28,12 @@ class PruebasController extends Controller
 
         $deletePrueba->delete();
 
-        return redirect('/admin/' . $deletePrueba->id_olimpiada . '/' . $deletePrueba->grado . '/pruebas'); 
+        return redirect('/admin/' . $deletePrueba->id_olimpiada . '/' . $deletePrueba->grado . '/pruebas');
     }
 
     public function getPruebaForm($olimpiada){
 
-        return view('pruebaFormulario', array('olimpiada' => $olimpiada, 'created' => false));
+        return view('pruebaFormulario', array('ol' => $olimpiada, 'created' => false));
     }
 
     public function createPrueba(Request $request){
@@ -58,6 +58,6 @@ class PruebasController extends Controller
             $puntuacion->save();
         }
 
-        return view('pruebaFormulario', array('olimpiada' => $request->input('testOl'), 'created' => true));
+        return view('pruebaFormulario', array('ol' => $request->input('testOl'), 'created' => true));
     }
 }

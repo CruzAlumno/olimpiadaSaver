@@ -28,50 +28,97 @@
 
       @include('includes.navbar')
 
+      <?php
+        use Illuminate\Support\Facades\Auth;
+        use App\Models\Olimpiada;
+
+        $olTitle = "";
+        $admin = "";
+        $authCheck = Auth::check();
+
+        if(isset($ol)){
+            $oll = Olimpiada::find($ol);
+            $olTitle = $oll->edicionOlimpiada . " OLIMPIADAS INFORMÁTICAS";
+        }
+
+        if($authCheck) $admin = "/admin"
+      ?>
+
       <div id="nav-drawer">
         <nav id="nav-content">
 
           <ul id="section-links" itemscope="" itemtype="https://www.schema.org/SiteNavigationElement">
+            @if(isset($ol))
             <li itemprop="name">
-              <a itemprop="url" class="section-link films-content" href="/equipos/medio"
+              <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/medio/equipos"
                 data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
-                <p class="films-content-title"><span>grado medio</span><span class="vertical-bar"></span><span
+                <p class="films-content-title"><span>Equipos - medio</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link films-content" href="/equipos/superior"
+              <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/superior/equipos"
                 data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
-                <p class="films-content-title"><span>grado superior</span><span class="vertical-bar"></span><span
+                <p class="films-content-title"><span>Equipos - superior</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link characters-content" href="#"
+                <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/modding/equipos"
+                  data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
+                  <p class="films-content-title"><span>Equipos - modding</span><span class="vertical-bar"></span><span
+                      class="horizontal-bar"></span></p>
+                </a>
+              </li>
+            <li itemprop="name">
+              <a itemprop="url" class="section-link characters-content" href="{{$admin}}/{{$ol}}/medio/pruebas"
                 data-cto="section" data-section="characters" tabindex="0" aria-hidden="false">
-                <p class="characters-content-title"><span>participantes</span><span class="vertical-bar"></span><span
+                <p class="characters-content-title"><span>Pruebas - medio</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link gamesapps-content" href="/resultados/medio"
+              <a itemprop="url" class="section-link gamesapps-content" href="{{$admin}}/{{$ol}}/superior/pruebas"
                 data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                <p class="gamesapps-content-title"><span>resultados GM</span><span class="vertical-bar"></span><span
+                <p class="gamesapps-content-title"><span>Pruebas - superior</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link gamesapps-content" href="/resultados/superior"
+                <a itemprop="url" class="section-link gamesapps-content" href="{{$admin}}/{{$ol}}/modding/pruebas"
+                  data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
+                  <p class="gamesapps-content-title"><span>Pruebas - modding</span><span class="vertical-bar"></span><span
+                      class="horizontal-bar"></span></p>
+                </a>
+              </li>
+            <li itemprop="name">
+              <a itemprop="url" class="section-link gamesapps-content" href="/{{$ol}}/medio/resultados"
                 data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                <p class="gamesapps-content-title"><span>resultados GS</span><span class="vertical-bar"></span><span
+                <p class="gamesapps-content-title"><span>Resultados - medio</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
+            <li itemprop="name">
+                <a itemprop="url" class="section-link gamesapps-content" href="/{{$ol}}/superior/resultados"
+                  data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
+                  <p class="gamesapps-content-title"><span>Resultados - superior</span><span class="vertical-bar"></span><span
+                      class="horizontal-bar"></span></p>
+                </a>
+              </li>
+            <li itemprop="name">
+                <a itemprop="url" class="section-link gamesapps-content" href="/{{$ol}}/modding/resultados"
+                  data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
+                  <p class="gamesapps-content-title"><span>Resultados - modding</span><span class="vertical-bar"></span><span
+                      class="horizontal-bar"></span></p>
+                </a>
+            </li>
+            @endif
           </ul>
 
 
         </nav>
       </div>
+
       <div id="countdown" class="hidden">
         <ol>
         </ol>
@@ -112,7 +159,7 @@
                     <div class="module_header">
                       <div class="title">
                         <h2 class="title-container"> <span class="title-text">
-                            <div class="non-mobile-title-text">XIV OLIMPIADAS INFORMÁTICAS - MAYO 2023</div>
+                            <div class="non-mobile-title-text">{{$olTitle}}</div>
                           </span> </h2>
                       </div>
                     </div>
