@@ -31,10 +31,9 @@ class PruebasController extends Controller
         return redirect('/admin/' . $deletePrueba->id_olimpiada . '/' . $deletePrueba->grado . '/pruebas'); 
     }
 
-    public function getPruebaForm(){
-        $olimpiadas = Olimpiada::all();
+    public function getPruebaForm($olimpiada){
 
-        return view('pruebaFormulario', array('olimpiadas' => $olimpiadas));
+        return view('pruebaFormulario', array('olimpiada' => $olimpiada, 'created' => false));
     }
 
     public function createPrueba(Request $request){
@@ -59,6 +58,6 @@ class PruebasController extends Controller
             $puntuacion->save();
         }
 
-        return redirect('admin/pruebas/' . $request->input("testOl"));
+        return view('pruebaFormulario', array('olimpiada' => $request->input('testOl'), 'created' => true));
     }
 }
