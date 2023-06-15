@@ -11,12 +11,24 @@ use App\Models\Olimpiada;
 
 class PruebasController extends Controller
 {
-    public function getPruebas($olimpiada = null){
-        $pruebas = isset($olimpiada)
-            ? Prueba::where("id_olimpiada", $olimpiada)->get()
-            : Prueba::all();
+    public function getPruebas($olimpiada, $grado){
+        $pruebas = Prueba::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get();
 
         return view("pruebas", array("pruebas" => $pruebas ));
+    }
+
+    public function getPruebasAdmin($olimpiada, $grado){
+        $pruebas = Prueba::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get();
+
+        return view("pruebasAdmin", array("pruebas" => $pruebas ));
+    }
+
+    public function deletePrueba($prueba){
+        $deletePrueba = Prueba::find($prueba);
+
+        $deletePrueba->delete();
+
+        return redirect('/admin/' . $deletePrueba->id_olimpiada . '/' . $deletePrueba->grado . '/pruebas'); 
     }
 
     public function getPruebaForm(){
