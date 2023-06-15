@@ -21,7 +21,7 @@ Route::get('/{olimpiada}/subscripcion', [EquiposController::class, 'getEquipoFor
 Route::get('/admin/confirm/{equipo}', [EquiposController::class, 'confirmEquipo']);
 Route::get('/admin/delete/equipo/{equipo}', [EquiposController::class, 'deleteEquipo']);
 Route::post('/admin/{olimpiada}/{grado}/equipos', [EquiposController::class, 'changeEquipoScore']);
-Route::post('/admin/newTeam', [EquiposController::class, 'createEquipo']);
+Route::post('/{olimpiada}/subscripcion', [EquiposController::class, 'createEquipo']);
 Route::get('/{olimpiada}/{grado}/equipos', [EquiposController::class, 'getEquipos']);
 Route::get('/admin/{olimpiada}/{grado}/equipos', [EquiposController::class, 'getEquiposAdmin']);
 Route::get('/{olimpiada}/{grado}/resultados', [EquiposController::class, 'getResultados']);

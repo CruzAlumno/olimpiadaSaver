@@ -112,7 +112,6 @@
                     <div class="module_header">
                       <div class="title">
                         <h2 class="title-container"> <span class="title-text">
-                            <div class="mobile-title-text">XIV OLIMPIADAS INFORMÁTICAS - MAYO 2023</div>
                             <div class="non-mobile-title-text">XIV OLIMPIADAS INFORMÁTICAS - MAYO 2023</div>
                           </span> </h2>
                       </div>

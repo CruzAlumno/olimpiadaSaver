@@ -30,7 +30,7 @@ class EquiposController extends Controller
             array_push($equiposFormat, ['nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
         }
 
-        return view("equipos", array("equipos" => $equiposFormat ), "olimpiada" => $olimpiada);
+        return view("equipos", array("equipos" => $equiposFormat, "olimpiada" => $olimpiada));
     }
 
     public function getEquiposAdmin($olimpiada, $grado){
