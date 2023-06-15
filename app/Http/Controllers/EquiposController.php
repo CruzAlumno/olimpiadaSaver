@@ -153,7 +153,7 @@ class EquiposController extends Controller
             $puntuacion->save();
         }
 
-        return view('equipoFormulario', array('olimpiada' => $request->input('olId'), "olimpiada" => $olimpiada));
+        return view('equipoFormulario', array('olimpiada' => $request->input('olId'),  'created' => true));
     }
 
     public function confirmEquipo($equipo){
