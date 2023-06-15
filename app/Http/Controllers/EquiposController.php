@@ -170,8 +170,6 @@ class EquiposController extends Controller
     public function deleteEquipo($equipo){
         $deleteEquipo = Equipo::find($equipo);
 
-        $deleteEquipo->confirmed = true;
-
         $deleteEquipo->delete();
 
         return redirect('/admin/' . $deleteEquipo->id_olimpiada . '/' . $deleteEquipo->grado . '/equipos');
