@@ -4,7 +4,7 @@
 <form method="POST">
     @csrf
     <h1>Datos de equipo</h1>
-    <input type="hidden" id="olId" name="olId" value={{$lastOlimpiadaId}}>
+    <input type="hidden" id="olId" name="olId" value={{$olimpiada}}>
     <label for="teamName">Nombre del equipo: </label>
     <input type="text" id="teamName" name="teamName" required>
     <label for="teamCenter">Nombre del Centro: </label>
@@ -19,5 +19,8 @@
     </select>
     <input type="submit" value="Crear">
 </form>
+@if ($created)
+<p style="color:green">Su equipo se ha suscrito con éxito</p>
+@endif
 
 @stop
