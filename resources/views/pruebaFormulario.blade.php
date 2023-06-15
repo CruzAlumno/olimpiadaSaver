@@ -4,6 +4,7 @@
 <form method="POST">
     @csrf
     <h1>Crear prueba</h1>
+    <input type="hidden" id="testOl" name="testOl" value={{$olimpiada}}>
     <label for="testName">Nombre de la prueba: </label>
     <input type="text" id="testName" name="testName" required>
     <label for="testDesc">Descripcion de la prueba: </label>
@@ -14,12 +15,9 @@
         <option>Medio</option>
         <option>Modding</option>
     </select>
-    <select type="date" id="testOl" name="testOl">
-    @foreach ($olimpiadas as $olimpiada)
-        <option value={{$olimpiada->id}}>{{$olimpiada->nombre}}-{{$olimpiada->edicionOlimpiada}}</option>
-    @endforeach
-    </select>
     <input type="submit" value="Crear">
 </form>
-
+@if ($created)
+<p style="color:green">La prueba se ha creado con éxito</p>
+@endif
 @stop
