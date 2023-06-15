@@ -125,10 +125,9 @@ class EquiposController extends Controller
         }
     }
 
-    public function getEquipoForm(){
-        $lastOlimpiadaId = Olimpiada::latest()->first()->id;
+    public function getEquipoForm($olimpiada){
 
-        return view('equipoFormulario', array('lastOlimpiadaId' => $lastOlimpiadaId));
+        return view('equipoFormulario', array('olimpiada' => $olimpiada));
     }
 
     public function createEquipo(Request $request){
@@ -154,7 +153,7 @@ class EquiposController extends Controller
             $puntuacion->save();
         }
 
-        return redirect('equipos/' . $request->input("olId"));
+        return view('equipoFormulario', array('olimpiada' => $request->input('olId')));
     }
 
     public function confirmEquipo($equipo){
