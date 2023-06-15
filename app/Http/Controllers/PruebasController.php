@@ -14,13 +14,13 @@ class PruebasController extends Controller
     public function getPruebas($olimpiada, $grado){
         $pruebas = Prueba::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get();
 
-        return view("pruebas", array("pruebas" => $pruebas ));
+        return view("pruebas", array("pruebas" => $pruebas, "olimpiada" => $olimpiada ));
     }
 
     public function getPruebasAdmin($olimpiada, $grado){
         $pruebas = Prueba::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get();
 
-        return view("pruebasAdmin", array("pruebas" => $pruebas ));
+        return view("pruebasAdmin", array("pruebas" => $pruebas, "olimpiada" => $olimpiada ));
     }
 
     public function deletePrueba($prueba){
