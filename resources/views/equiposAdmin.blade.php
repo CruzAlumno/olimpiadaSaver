@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="./index_files/table_div.css" type="text/css">
 @section('content')
 
+@include('includes.secondNavbar')
+
 @foreach( $equipos as $equipo )
 <!-- Inicio del código necesario para visualizar cada película -->
 <section class="module display-view display" data-module="display" id="ref-1-2">
