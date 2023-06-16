@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="./index_files/table_div.css" type="text/css">
 @section('content')
 
+@include('includes.secondNavbar')
+
 <?php
     $titulos = ["1º Equipo", "2º Equipo", "3º Equipo"];
     $index = 0;
