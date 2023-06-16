@@ -12,8 +12,9 @@
           <span class="bar"></span>
         </div>
       </div>
-      <a id="nav-sw-logo" href="http://starwarsbattle.test/" itemprop="logo" data-cto="swlogo"
-        title="Star Wars Logo"></a>
+      <a id="" href="http://starwarsbattle.test/" itemprop="logo" data-cto="swlogo"
+        title="Star Wars Logo"><img src="{{ URL::to('/') }}/img/title.png"></a>
+
 
       <div id="nav-utility">
 
@@ -26,6 +27,9 @@
           </div>
           @endguest
           @auth
+          <form action="/logoutAdmin" method="GET">
+            <button type="submit">Logout</button>
+          </form>
           <div class="logged-in-container">
             <div class="display-user log-in-out" tabindex="-1" aria-hidden="true">
               <span class="disid-user" role="button" tabindex="0"></span>

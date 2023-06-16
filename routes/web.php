@@ -22,6 +22,7 @@ Route::get('/admin/newOlimpiada', function () {
     return view('olimpiadaFormulario');
 })->middleware(['auth']);
 Route::post('/admin/newOlimpiada', [OlimpiadasController::class, 'createOlimpiada'])->middleware(['auth']);
+Route::get('/logoutAdmin', [OlimpiadasController::class, 'logoutAdmin']);
 
 Route::get('/{olimpiada}/{grado}/pruebas', [PruebasController::class, 'getPruebas']);
 Route::get('/admin/{olimpiada}/{grado}/pruebas', [PruebasController::class, 'getPruebasAdmin'])->middleware(['auth']);

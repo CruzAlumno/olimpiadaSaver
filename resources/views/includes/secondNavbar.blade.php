@@ -1,3 +1,11 @@
+<?php
+        use Illuminate\Support\Facades\Auth;
+        $admin = "";
+        $authCheck = Auth::check();
+
+        if($authCheck) $admin = "/admin"
+?>
+
 <div id="secondNavbar">
     <a class="secondLink" href="{{$admin}}/{{$ol}}/{{$gr}}/pruebas">Pruebas</a>
     <a class="secondLink" href="{{$admin}}/{{$ol}}/{{$gr}}/equipos">Equipos</a>
@@ -10,7 +18,7 @@
         color: white;
         display: flex;
         justify-content: safe center;
-        border: 5px solid white;
+        border: 2px solid white;
     }
 
     #secondNavbar .secondLink:link,
@@ -19,5 +27,12 @@
     #secondNavbar .secondLink:active{
         text-decoration: none;
         color: white;
+    }
+
+    .secondLink{
+        padding: 10px;
+        border: 5px solid white;
+        flex:1;
+        text-align: center
     }
 </style>

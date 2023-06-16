@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Models\Olimpiada;
 
 class OlimpiadasController extends Controller
@@ -11,6 +13,14 @@ class OlimpiadasController extends Controller
         $olimpiadas = Olimpiada::all();
 
         return view("olimpiadas", array("olimpiadas" => $olimpiadas ));
+    }
+
+    public function logoutAdmin(){
+        Auth::logout();
+
+        Log::info("here");
+
+        return redirect('/');
     }
 
     public function createOlimpiada(Request $request) {

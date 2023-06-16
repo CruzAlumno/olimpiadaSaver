@@ -127,7 +127,7 @@ class EquiposController extends Controller
 
     public function getEquipoForm($olimpiada){
 
-        return view('equipoFormulario', array('olimpiada' => $olimpiada, 'created' => false));
+        return view('equipoFormulario', array('ol' => $olimpiada, 'created' => false));
     }
 
     public function createEquipo(Request $request){
