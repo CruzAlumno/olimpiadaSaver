@@ -20,22 +20,22 @@ use App\Http\Controllers\PruebasController;
 Route::get('/', [OlimpiadasController::class, 'getOlimpiadas']);
 Route::get('/admin/newOlimpiada', function () {
     return view('olimpiadaFormulario');
-});
-Route::post('/admin/newOlimpiada', [OlimpiadasController::class, 'createOlimpiada']);
+})->middleware(['auth']);
+Route::post('/admin/newOlimpiada', [OlimpiadasController::class, 'createOlimpiada'])->middleware(['auth']);
 
 Route::get('/{olimpiada}/{grado}/pruebas', [PruebasController::class, 'getPruebas']);
-Route::get('/admin/{olimpiada}/{grado}/pruebas', [PruebasController::class, 'getPruebasAdmin']);
-Route::get('/admin/{olimpiada}/newPrueba', [PruebasController::class, 'getPruebaForm']);
-Route::post('/admin/{olimpiada}/newPrueba', [PruebasController::class, 'createPrueba']);
-Route::get('/admin/delete/prueba/{prueba}', [PruebasController::class, 'deletePrueba']);
+Route::get('/admin/{olimpiada}/{grado}/pruebas', [PruebasController::class, 'getPruebasAdmin'])->middleware(['auth']);
+Route::get('/admin/{olimpiada}/newPrueba', [PruebasController::class, 'getPruebaForm'])->middleware(['auth']);
+Route::post('/admin/{olimpiada}/newPrueba', [PruebasController::class, 'createPrueba'])->middleware(['auth']);
+Route::get('/admin/delete/prueba/{prueba}', [PruebasController::class, 'deletePrueba'])->middleware(['auth']);
 
 Route::get('/{olimpiada}/subscripcion', [EquiposController::class, 'getEquipoForm']);
-Route::get('/admin/confirm/{equipo}', [EquiposController::class, 'confirmEquipo']);
-Route::get('/admin/delete/equipo/{equipo}', [EquiposController::class, 'deleteEquipo']);
-Route::post('/admin/{olimpiada}/{grado}/equipos', [EquiposController::class, 'changeEquipoScore']);
+Route::get('/admin/confirm/{equipo}', [EquiposController::class, 'confirmEquipo'])->middleware(['auth']);
+Route::get('/admin/delete/equipo/{equipo}', [EquiposController::class, 'deleteEquipo'])->middleware(['auth']);
+Route::post('/admin/{olimpiada}/{grado}/equipos', [EquiposController::class, 'changeEquipoScore'])->middleware(['auth']);
 Route::post('/{olimpiada}/subscripcion', [EquiposController::class, 'createEquipo']);
 Route::get('/{olimpiada}/{grado}/equipos', [EquiposController::class, 'getEquipos']);
-Route::get('/admin/{olimpiada}/{grado}/equipos', [EquiposController::class, 'getEquiposAdmin']);
+Route::get('/admin/{olimpiada}/{grado}/equipos', [EquiposController::class, 'getEquiposAdmin'])->middleware(['auth']);
 Route::get('/{olimpiada}/{grado}/resultados', [EquiposController::class, 'getResultados']);
 
 Route::get('/dashboard', function () {
