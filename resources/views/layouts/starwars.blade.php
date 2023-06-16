@@ -50,67 +50,41 @@
           <ul id="section-links" itemscope="" itemtype="https://www.schema.org/SiteNavigationElement">
             @if(isset($ol))
             <li itemprop="name">
-              <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/medio/equipos"
+              <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/medio/pruebas"
                 data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
-                <p class="films-content-title"><span>Equipos - medio</span><span class="vertical-bar"></span><span
+                <p class="films-content-title"><span>Medio</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/superior/equipos"
+              <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/superior/pruebas"
                 data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
-                <p class="films-content-title"><span>Equipos - superior</span><span class="vertical-bar"></span><span
+                <p class="films-content-title"><span>Superior</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
             <li itemprop="name">
-                <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/modding/equipos"
+                <a itemprop="url" class="section-link films-content" href="{{$admin}}/{{$ol}}/modding/pruebas"
                   data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
-                  <p class="films-content-title"><span>Equipos - modding</span><span class="vertical-bar"></span><span
+                  <p class="films-content-title"><span>Modding</span><span class="vertical-bar"></span><span
                       class="horizontal-bar"></span></p>
                 </a>
-              </li>
+            </li>
             <li itemprop="name">
-              <a itemprop="url" class="section-link characters-content" href="{{$admin}}/{{$ol}}/medio/pruebas"
-                data-cto="section" data-section="characters" tabindex="0" aria-hidden="false">
-                <p class="characters-content-title"><span>Pruebas - medio</span><span class="vertical-bar"></span><span
+              <a itemprop="url" class="section-link films-content" href="/{{$ol}}/subscripcion"
+                data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
+                <p class="films-content-title"><span>Subscripción</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
             </li>
+            @endif
+            @if($authCheck)
             <li itemprop="name">
-              <a itemprop="url" class="section-link gamesapps-content" href="{{$admin}}/{{$ol}}/superior/pruebas"
-                data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                <p class="gamesapps-content-title"><span>Pruebas - superior</span><span class="vertical-bar"></span><span
+              <a itemprop="url" class="section-link films-content" href="/admin/{{$ol}}/newPrueba"
+                data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
+                <p class="films-content-title"><span>Nueva Prueba</span><span class="vertical-bar"></span><span
                     class="horizontal-bar"></span></p>
               </a>
-            </li>
-            <li itemprop="name">
-                <a itemprop="url" class="section-link gamesapps-content" href="{{$admin}}/{{$ol}}/modding/pruebas"
-                  data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                  <p class="gamesapps-content-title"><span>Pruebas - modding</span><span class="vertical-bar"></span><span
-                      class="horizontal-bar"></span></p>
-                </a>
-              </li>
-            <li itemprop="name">
-              <a itemprop="url" class="section-link gamesapps-content" href="/{{$ol}}/medio/resultados"
-                data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                <p class="gamesapps-content-title"><span>Resultados - medio</span><span class="vertical-bar"></span><span
-                    class="horizontal-bar"></span></p>
-              </a>
-            </li>
-            <li itemprop="name">
-                <a itemprop="url" class="section-link gamesapps-content" href="/{{$ol}}/superior/resultados"
-                  data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                  <p class="gamesapps-content-title"><span>Resultados - superior</span><span class="vertical-bar"></span><span
-                      class="horizontal-bar"></span></p>
-                </a>
-              </li>
-            <li itemprop="name">
-                <a itemprop="url" class="section-link gamesapps-content" href="/{{$ol}}/modding/resultados"
-                  data-cto="section" data-section="gamesapps" tabindex="0" aria-hidden="false">
-                  <p class="gamesapps-content-title"><span>Resultados - modding</span><span class="vertical-bar"></span><span
-                      class="horizontal-bar"></span></p>
-                </a>
             </li>
             @endif
           </ul>
