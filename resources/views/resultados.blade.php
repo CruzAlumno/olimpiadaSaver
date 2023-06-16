@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="./index_files/table_div.css" type="text/css">
 @section('content')
 
+@include('includes.secondNavbar')
+
 @foreach( $equipos as $equipo )
 <!-- Inicio del código necesario para visualizar cada película -->
 <h1>{{$equipo["titulo"]}}</h1>
