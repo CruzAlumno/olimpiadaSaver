@@ -77,7 +77,6 @@
                     class="horizontal-bar"></span></p>
               </a>
             </li>
-            @endif
             @if($authCheck)
             <li itemprop="name">
               <a itemprop="url" class="section-link films-content" href="/admin/{{$ol}}/newPrueba"
@@ -87,6 +86,16 @@
               </a>
             </li>
             @endif
+            @elseif($authCheck)
+            <li itemprop="name">
+              <a itemprop="url" class="section-link films-content" href="/admin/{{$ol}}/newPrueba"
+                data-cto="section" data-section="films" tabindex="0" aria-hidden="false">
+                <p class="films-content-title"><span>Crear Olimpiada</span><span class="vertical-bar"></span><span
+                    class="horizontal-bar"></span></p>
+              </a>
+            </li>
+            @endif
+            
           </ul>
 
 
