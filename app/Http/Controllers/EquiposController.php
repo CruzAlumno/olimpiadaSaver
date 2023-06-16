@@ -30,7 +30,7 @@ class EquiposController extends Controller
             array_push($equiposFormat, ['nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
         }
 
-        return view("equipos", array("equipos" => $equiposFormat, "ol" => $olimpiada));
+        return view("equipos", array("equipos" => $equiposFormat, "ol" => $olimpiada, "gr" => $grado));
     }
 
     public function getEquiposAdmin($olimpiada, $grado){
@@ -52,7 +52,7 @@ class EquiposController extends Controller
             array_push($equiposFormat, ['grado' => $grado, 'id_olimpiada' => $olimpiada, 'id' => $equipo->id, 'confirmed' => $equipo->confirmed, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas]);
         }
 
-        return view("equiposAdmin", array("equipos" => $equiposFormat, "ol" => $olimpiada ));
+        return view("equiposAdmin", array("equipos" => $equiposFormat, "ol" => $olimpiada, "gr" => $grado ));
     }
 
     public function getResultados($olimpiada, $grado){
@@ -86,7 +86,7 @@ class EquiposController extends Controller
                     $equiposFormat[2] = ["puntuacionTotal" => $puntuacionTotal, 'nombreEquipo' => $equipo->nombreEquipo, 'nombreCentro' => $equipo->nombreCentro, 'participantes' => $participantes, 'pruebas' => $pruebas];
                 }
             }
-            return view("moddingResultados", array("equipos" => $equiposFormat, "ol" => $olimpiada));
+            return view("moddingResultados", array("equipos" => $equiposFormat, "ol" => $olimpiada, "gr" => $grado));
         } else if(strcmp($grado, "superior") == 0 or (strcmp($grado, "medio") == 0)) {
             $equiposFormat = [0 => ["puntuacionTotal" => 0, "titulo" => "Ganadores Finales"]];
 
@@ -121,7 +121,7 @@ class EquiposController extends Controller
 
             }
 
-            return view("resultados", array("equipos" => $equiposFormat, "ol" => $olimpiada ));
+            return view("resultados", array("equipos" => $equiposFormat, "ol" => $olimpiada, "gr" => $grado ));
         }
     }
 
