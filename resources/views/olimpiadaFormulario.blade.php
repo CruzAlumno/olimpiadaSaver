@@ -19,7 +19,7 @@
     <input type="date" id="olSubFinish" name="olSubFinish" required>
     <label for="olReal">Fecha de realización: </label>
     <input type="date" id="olReal" name="olReal" required>
-    <input type="submit" value="Crear">
+    <input type="submit" value="Crear" style="margin-top:5px; color:black">
 </form>
 
 @stop

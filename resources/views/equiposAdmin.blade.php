@@ -19,7 +19,7 @@
                                         <div class="image-wrapper">
                                             <div class="aspect">
                                                 <img
-                                                        src="https://lumiere-a.akamaihd.net/v1/images/Star-Wars-Phantom-Menace-I-Poster_f5832812.jpeg?region=0%2C250%2C678%2C340&width=600"
+                                                        src="{{ URL::to('/') }}/img/people-group-solid.svg"
                                                         class="thumb reserved-ratio">
                                             </div>
                                         </div>

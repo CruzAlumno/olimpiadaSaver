@@ -12,12 +12,12 @@
     <label for="teamMembers" >Participantes (separa nombres con comas): </label>
     <input type="textarea" id="teamMembers" name="teamMembers" required>
     <label for="teamSub">Grado de participación: </label>
-    <select type="date" id="teamSub" name="teamSub">
+    <select type="date" id="teamSub" name="teamSub" style="color:black">
         <option>Superior</option>
         <option>Medio</option>
         <option>Modding</option>
     </select>
-    <input type="submit" value="Crear">
+    <input type="submit" value="Crear" style="margin-top:5px; color:black">
 </form>
 @if ($created)
 <p style="color:green">Su equipo se ha suscrito con éxito</p>
