@@ -14,7 +14,7 @@ class EquiposController extends Controller
     public function getEquipos($olimpiada, $grado){
         $equiposFormat = array();
         $equipos = isset($olimpiada)
-            ? Equipo::where("id_olimpiada", $olimpiada)->where("grado", $grado)->get()
+            ? Equipo::where("id_olimpiada", $olimpiada)->where("grado", $grado)->where("confirmed", true)->get()
             : Equipo::all();
 
         foreach ($equipos as $equipo) {
@@ -59,6 +59,7 @@ class EquiposController extends Controller
         $equiposFormat = array();
         $equipos = Equipo::where('grado', $grado)
                  ->where('id_olimpiada', $olimpiada)
+                 ->where("confirmed", true)
                  ->get();
         if (strcmp($grado, "modding") == 0) {
             $equiposFormat = [["puntuacionTotal" => 0], ["puntuacionTotal" => 0], ["puntuacionTotal" => 0]];
